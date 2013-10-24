@@ -1,11 +1,25 @@
-set :publishable_key, ENV['PUBLISHABLE_KEY']
-set :secret_key, ENV['SECRET_KEY']
-
-Stripe.api_key = settings.secret_key
-
 get '/' do
+  Stripe.api_key = settings.api_key
   # Look in app/views/index.erb
   erb :index
+end
+
+get "/play" do
+
+  erb :play
+end
+
+
+post '/draw' do
+
+  if request.xhr?
+    value = params[:value].to_i
+
+    @draw = value ? Card.create({ value: value }) : Card.create
+
+    erb :index
+  end
+
 end
 
 
@@ -27,6 +41,7 @@ post '/charge' do
 
   erb :charge
 end
+
 
 
 

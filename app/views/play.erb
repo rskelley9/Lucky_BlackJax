@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>BlackJax</h1>
+  <p>Draw Random Card From Deck</p>
+
+  <form method="post" action="/draw">
+    <input type="submit" value="Draw Cards">
+  </form>
+
+  <div id="card">
+    <% if @draw %>
+      <img src="/<%= @draw.value %>.png" title="<%= @draw.value %>" alt="the card">
+    <% end %>
+  </div>
+
+</div>
+

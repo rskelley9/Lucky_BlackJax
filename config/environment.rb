@@ -38,17 +38,16 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
 
-  configure do
-    config = YAML::load(File.open('keys.yml'))
+configure do
+  env_config = YAML.load_file(APP_ROOT.join('config', 'keys.yaml'))
 
-    set :api_key, config['api_key']
-    set :client_id, config['client_id']
 
-    options = {
-      :site => 'https://connect.stripe.com',
-      :authorize_url => '/oauth/authorize',
-      :token_url => '/oauth/token'
-    }
+  set :api_key, env_config['api_key']
+  set :client_id, env_config['client_id']
 
-    set :client, OAuth2::Client.new(settings.client_id, settings.api_key, options)
-
+  options = {
+    :site => 'https://connect.stripe.com',
+    :authorize_url => '/oauth/authorize',
+    :token_url => '/oauth/token'
+  }
+end

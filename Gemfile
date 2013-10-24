@@ -18,8 +18,6 @@ gem 'rake'
 
 gem'oauth2'
 
-gem 'yaml'
-
 gem 'json'
 
 gem 'shotgun'

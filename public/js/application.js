@@ -1,7 +1,18 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
+  $('form').on('submit', function(event) {
+    event.preventDefault();
+
+    var draw = Math.floor(1 + Math.random() * 60);
+
+    var request = $.post('/rolls', {value: draw});
+
+    request.done(function(data) {
+      $('#card').children().remove();
+      $('#card').append(data);
+    });
+  });
 });
+
+
