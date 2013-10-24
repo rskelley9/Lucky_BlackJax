@@ -1,0 +1,5 @@
+SECRET_KEY: " sk_test_pQWS4Dkn33kaUVk5DSw1pOpY"
+PUBLISHABLE_KEY: "pk_test_Q8K6QdYZIu55rm03zkXeV8ix"
+
+api_key: "sk_test_pQWS4Dkn33kaUVk5DSw1pOpY"
+client_id: YOUR_CLIENT_ID
